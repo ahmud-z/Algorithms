@@ -8,15 +8,16 @@ public class Quick_Sort {
         int maxIndex = right;
 
         while (minIndex <= maxIndex) {
-            while (arr[minIndex] <= arr[pivot]) {
+
+            while (maxIndex >= minIndex && arr[minIndex] <= arr[pivot]) {
                 minIndex++;
             }
 
-            while (arr[maxIndex] > arr[pivot]) {
+            while (maxIndex >= minIndex && arr[maxIndex] > arr[pivot]) {
                 maxIndex--;
             }
 
-            if (maxIndex > minIndex) {
+            if (maxIndex >= minIndex) {
 
                 int temp = arr[maxIndex];
                 arr[maxIndex] = arr[minIndex];
@@ -32,6 +33,7 @@ public class Quick_Sort {
     }
 
     static void quickSort(int arr[], int left, int right) {
+
         if (left < right) {
             int pivot_loc = partition(arr, left, right);
 
@@ -57,15 +59,8 @@ public class Quick_Sort {
 
         int arr[] = {5, 3, 4, 3, 1, 6, 4, 6, 0, 1, 2, 0};
 
-        int arrr[] = {10, 5};
+        quickSort(arr, 0, arr.length - 1);
 
-        int temp = arrr[0];
-        arrr[0] = arrr[1];
-        arrr[1] = temp;
-
-        for (int i = 0; i < arrr.length; i++) {
-            System.out.println(arrr[i] + " ");
-        }
-
+        printArray(arr);
     }
 }
