@@ -56,6 +56,12 @@ class BFS {
             visited[u] = 2; //mark as black
         }
 
+        if (isCycle) {
+            System.out.println("\nCycle detected");
+        } else {
+            System.out.println("\nNo cycle found");
+        }
+
         System.out.println("\nNode\tLevel\tParent");
         for (int i = 0; i < node; i++) {
             System.out.println(i + "\t " + level[i] + "\t " + parent[i]);
@@ -68,7 +74,7 @@ public class BFS_Cycle_Finding {
 
     static int[][] readFile() throws FileNotFoundException {
 
-        File filePath = new File("C:\\Users\\Mahmud\\Desktop\\Algorithms\\graph_edges.txt");
+        File filePath = new File("C:\\Users\\Mahmud\\Desktop\\Acycle.txt");
 
         Scanner file = new Scanner(filePath);
 
@@ -99,6 +105,5 @@ public class BFS_Cycle_Finding {
         } catch (Exception e) {
             System.out.println("Exception: " + e);
         }
-
     }
 }
