@@ -11,7 +11,7 @@ class BFS {
     public BFS(int matrix[][]) {
         runBFS(matrix);
     }
-    
+
     void runBFS(int graph[][]) {
 
         int node = graph.length;      //graph length
