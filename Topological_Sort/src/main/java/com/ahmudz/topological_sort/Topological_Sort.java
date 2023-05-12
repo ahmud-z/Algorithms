@@ -90,6 +90,7 @@ public class Topological_Sort {
             DFS.init(matrix);
 
             System.out.println("\nNode\tdTime\tfTime");
+            System.out.println("---------------------");
 
             for (int i = 0; i < DFS.node; i++) {
                 System.out.println(DFS.allNodes[i] + "\t" + DFS.discoveryTime[i] + "\t" + DFS.finishTime[i]);
@@ -98,6 +99,7 @@ public class Topological_Sort {
             DFS.topoSort();
 
         } catch (Exception e) {
+            System.out.println("Exception: " + e);
         }
 
     }
