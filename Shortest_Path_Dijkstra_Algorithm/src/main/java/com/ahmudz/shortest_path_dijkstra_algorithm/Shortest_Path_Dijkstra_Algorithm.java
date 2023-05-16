@@ -66,7 +66,7 @@ public class Shortest_Path_Dijkstra_Algorithm {
 
     static int[][] readFile() throws FileNotFoundException {
 
-        File filePath = new File("C:\\Users\\Mahmud\\Desktop\\dijkstra_graph_edges.txt");
+        File filePath = new File("C:\\Users\\Mahmud\\Desktop\\Algorithms\\dijkstra_graph_edges.txt");
         Scanner file = new Scanner(filePath);
 
         int node = file.nextInt();

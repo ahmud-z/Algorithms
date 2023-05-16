@@ -10,7 +10,7 @@ public class Fibonacci_Series_Dynamic_Programming {
 
         System.out.print("" + term1 + " " + term2 + " ");
 
-        for (int i = 2; i < 10; i++) {
+        for (int i = 2; i <= 10; i++) {
 
             System.out.print(nextTerm + " ");
             term1 = term2;
