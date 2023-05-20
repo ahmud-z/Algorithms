@@ -48,14 +48,14 @@ public class Fractional_Knapsack_Algorithm {
             if (capcity - currentWeight >= 0) {
                 totalProfits += currentProfits;
                 capcity -= currentWeight;
-                System.out.println("Taken product id: "+i.id);  
+                System.out.println("Taken product id: " + i.id);
             } else {
 
                 double fractionWeight = ((double) capcity / (double) currentWeight);
 
                 totalProfits += (int) (currentProfits * fractionWeight);
                 capcity = (int) (capcity - (currentWeight * fractionWeight));
-                System.out.println("Taken product id: "+i.id);
+                System.out.println("Taken product id: " + i.id);
                 break;
             }
         }
