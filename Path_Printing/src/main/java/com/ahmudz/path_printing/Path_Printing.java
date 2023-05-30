@@ -2,6 +2,8 @@ package com.ahmudz.path_printing;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 class DFS {
@@ -11,10 +13,12 @@ class DFS {
     static int color[] = new int[node];
     static int discoveryTime[] = new int[node];
     static int finishTime[] = new int[node];
+    static int parent[] = new int[node];
+
     static int time;
     static int sourceNode;
     static int destinationNode;
-    static int path[] = new int[node];
+    static Queue<Integer> path = new LinkedList<>();
 
     static void init(int graph[][]) {
 
@@ -43,18 +47,27 @@ class DFS {
         time++;
         discoveryTime[u] = time;
 
-        for (int v = 0; v < destinationNode; v++) {
+        while (color[destinationNode] != 2) {
+            for (int v = 0; v < destinationNode; v++) {
 
-            if (graph[u][v] == 1 && color[v] == 0) {
-                runDFS(graph, v);
-                path[v] = allNodes[u];
+                if (graph[u][v] == 1 && color[v] == 0) {
+                    runDFS(graph, v);
+                    parent[v] = allNodes[u];
+                    path.add(parent[v]);
+                }
             }
-        }
-        color[u] = 2;
-        time++;
-        finishTime[u] = time;
-    }
 
+            color[u] = 2;
+            time++;
+            finishTime[u] = time;
+
+        }
+
+        while (!path.isEmpty()) {
+            int k = path.poll();
+            System.out.print(+k + " ");
+        }
+    }
 }
 
 public class Path_Printing {
@@ -90,7 +103,6 @@ public class Path_Printing {
             DFS.init(matrix);
 
             for (int i = 0; i < matrix.length; i++) {
-                System.out.println(DFS.path[i] + " ");
             }
 
         } catch (Exception e) {

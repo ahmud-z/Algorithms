@@ -1,29 +1,25 @@
 package com.ahmudz.kruskal_second_best_mst;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
-class SortByWeight implements Comparator<Edges> {
+class SortByWeight implements Comparator<Edge> {
 
     @Override
-    public int compare(Edges ob1, Edges ob2) {
+    public int compare(Edge ob1, Edge ob2) {
         return ob1.weight - ob2.weight;
     }
 }
 
-class Edges {
+class Edge {
 
     int source;
     int destination;
     int weight;
 
-    public Edges() {
+    public Edge() {
     }
 
-    public Edges(int source, int destination, int weight) {
+    public Edge(int source, int destination, int weight) {
         this.source = source;
         this.destination = destination;
         this.weight = weight;
@@ -33,12 +29,10 @@ class Edges {
 public class Kruskal_Second_Best_MST {
 
     int nodeAmount;
-    int edgeAmount;
     int leaderArray[];
 
     public Kruskal_Second_Best_MST(int nodeAmount, int edgeAmount) {
         this.nodeAmount = nodeAmount;
-        this.edgeAmount = edgeAmount;
         leaderArray = new int[nodeAmount];
     }
 
@@ -63,12 +57,12 @@ public class Kruskal_Second_Best_MST {
         }
     }
 
-    int findSecondBestMST(Edges arr[], int skipEdgeIndex) {
+    Edge[] findMst(Edge arr[], int skipEdgeIndex) {
 
-        Edges resultArray[] = new Edges[nodeAmount - 1];
+        Edge resultArray[] = new Edge[nodeAmount - 1];
 
         for (int i = 0; i < resultArray.length; i++) {
-            resultArray[i] = new Edges();
+            resultArray[i] = new Edge();
         }
 
         Arrays.sort(arr, new SortByWeight());
@@ -85,7 +79,7 @@ public class Kruskal_Second_Best_MST {
                 continue;
             }
 
-            Edges nextEdge = arr[v];
+            Edge nextEdge = arr[v];
 
             int x = findLeader(nextEdge.source);
             int y = findLeader(nextEdge.destination);
@@ -96,39 +90,72 @@ public class Kruskal_Second_Best_MST {
             }
         }
 
+        return resultArray;
+    }
+
+    int calculateCost(Edge[] resultArray) {
+
         int cost = 0;
+
         for (int i = 0; i < resultArray.length; i++) {
             cost += resultArray[i].weight;
         }
+
         return cost;
+    }
+
+    void printResultTree(Edge[] resultArray) {
+        for (int i = 0; i < resultArray.length; i++) {
+            Edge edge = resultArray[i];
+
+            System.out.println("  " + edge.source + "\t   " + edge.destination + "\t     " + edge.weight);
+        }
     }
 
     public static void main(String[] args) {
 
-        Edges arr[] = {
-            new Edges(0, 1, 10),
-            new Edges(0, 2, 6),
-            new Edges(0, 3, 5),
-            new Edges(1, 3, 15),
-            new Edges(2, 3, 4)
+        Edge arr[] = {
+            new Edge(0, 1, 4),
+            new Edge(0, 2, 4),
+            new Edge(1, 2, 2),
+            new Edge(2, 3, 3),
+            new Edge(2, 4, 2),
+            new Edge(2, 5, 4),
+            new Edge(3, 5, 3),
+            new Edge(4, 5, 3)
         };
 
-        Kruskal_Second_Best_MST ob = new Kruskal_Second_Best_MST(4, 5);
+        Kruskal_Second_Best_MST ob = new Kruskal_Second_Best_MST(6, 8);
 
-        System.out.println("Minimunm Spanning cost: " + ob.findSecondBestMST(arr, 9999));
+        Edge[] bestMstTree = ob.findMst(arr, 9999);
+        int bestMstCost = ob.calculateCost(bestMstTree);
+
+        System.out.println("Minimunm Spanning cost: " + bestMstCost);
+        System.out.println("Source Destination Weight");
+        ob.printResultTree(bestMstTree);
 
         List<Integer> scores = new ArrayList<>();
+        Map<Integer, Edge[]> trees = new HashMap<>();
 
-        for (int i = 0; i < 5; i++) {
-            int s = ob.findSecondBestMST(arr, i);
-            if (scores.contains(s) == false) {
-                scores.add(s);
+        for (int i = 0; i < 8; i++) {
+            Edge[] tree = ob.findMst(arr, i);
+            int cost = ob.calculateCost(tree);
+
+            trees.put(cost, tree);
+
+            if (scores.contains(cost) == false) {
+                scores.add(cost);
             }
         }
 
         Collections.sort(scores);
+        int secondBestScore = scores.get(1);
 
-        System.out.println("Second best MST: " + scores.get(1));
+        System.out.println("Second best MST cost: " + secondBestScore);
+
+        Edge[] secondTree = trees.get(secondBestScore);
+
+        ob.printResultTree(secondTree);
     }
 
 }
