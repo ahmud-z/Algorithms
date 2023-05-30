@@ -29,6 +29,7 @@ public class MakingCoinChanges {
     }
 
     public static void main(String[] args) {
+
         int amount = 16;
 
         System.out.println("\nTotal required coins: " + MakingCoinChanges.findTotalCoin(amount));
