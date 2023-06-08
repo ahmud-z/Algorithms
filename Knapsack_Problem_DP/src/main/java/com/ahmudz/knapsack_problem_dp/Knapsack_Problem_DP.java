@@ -10,7 +10,7 @@ public class Knapsack_Problem_DP {
         return a > b ? a : b;                       // returns max items
     }
 
-    static int findKhapsack(int knapsackCapacity, int itemWeights[], int itemValues[], int numberOfItem) {
+    static int findKnapsack(int knapsackCapacity, int itemWeights[], int itemValues[], int numberOfItem) {
 
         int P[][] = new int[numberOfItem + 1][knapsackCapacity + 1];
 
@@ -25,6 +25,13 @@ public class Knapsack_Problem_DP {
                     P[i][j] = P[i - 1][j];
                 }
             }
+        }
+
+        for (int i = 0; i < numberOfItem + 1; i++) {
+            for (int j = 0; j < knapsackCapacity + 1; j++) {
+                System.out.print(P[i][j] + " ");
+            }
+            System.out.println(" ");
         }
 
         return P[numberOfItem][knapsackCapacity];
@@ -51,7 +58,7 @@ public class Knapsack_Problem_DP {
             temp++;
         }
 
-        System.out.println("Maximum profits: " + findKhapsack(knapsackCapacity, itemsWeights, itemValues, numberOfItems));
+        System.out.println("Maximum profits: " + findKnapsack(knapsackCapacity, itemsWeights, itemValues, numberOfItems));
     }
 
     public static void main(String[] args) {

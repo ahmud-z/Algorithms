@@ -101,14 +101,19 @@ public class MST_Kruskal_Algorithm {
     public static void main(String[] args) {
 
         Edges arr[] = {
-            new Edges(0, 1, 10),
-            new Edges(0, 2, 6),
+            new Edges(0, 1, 7),
             new Edges(0, 3, 5),
-            new Edges(1, 3, 15),
-            new Edges(2, 3, 4)
-        };
+            new Edges(1, 2, 8),
+            new Edges(1, 3, 9),
+            new Edges(1, 4, 7),
+            new Edges(2, 4, 5),
+            new Edges(3, 4, 15),
+            new Edges(3, 5, 6),
+            new Edges(4, 5, 8),
+            new Edges(4, 6, 9),
+            new Edges(5, 6, 11)};
 
-        MST_Kruskal_Algorithm ob = new MST_Kruskal_Algorithm(4, 5);
+        MST_Kruskal_Algorithm ob = new MST_Kruskal_Algorithm(7, 11);
 
         System.out.println("\nMinimum Spanning Tree Cost: " + ob.kruskalMST(arr));
     }
