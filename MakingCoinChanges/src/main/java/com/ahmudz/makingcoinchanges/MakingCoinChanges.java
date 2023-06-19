@@ -14,7 +14,7 @@ public class MakingCoinChanges {
 
     static int findTotalCoin(int amount) {
 
-        int coins[] = {1, 2, 5, 10, 20, 50, 100, 500, 1000};
+        int coins[] = {1, 2, 5, 10, 20, 50, 100, 500, 1000};// coins must be sorted in increasing order
         int total = 0;
 
         System.out.print("Taken coins: ");
@@ -30,7 +30,7 @@ public class MakingCoinChanges {
 
     public static void main(String[] args) {
 
-        int amount = 16;
+        int amount = 11;
 
         System.out.println("\nTotal required coins: " + MakingCoinChanges.findTotalCoin(amount));
     }

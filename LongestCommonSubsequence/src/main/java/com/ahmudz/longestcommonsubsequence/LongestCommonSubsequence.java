@@ -42,10 +42,13 @@ public class LongestCommonSubsequence {
             }
         }
 
-        for (int x = 0; x < str.size(); x++) {
-            System.out.print(str.get(x) + " ");
+        if (!str.isEmpty()) {
+            for (int x = 0; x < str.size(); x++) {
+                System.out.print(str.get(x) + " ");
+            }
+        } else {
+            System.out.print("No common sequence found");
         }
-        System.out.println("");
     }
 
     static int findLCS(char arr1[], char arr2[]) {
@@ -75,8 +78,8 @@ public class LongestCommonSubsequence {
 
     public static void main(String[] args) {
 
-        String str1 = "BDCB";
-        String str2 = "BACDB";
+        String str1 = "abcdefghijklmnzyxwvutsrqpo";
+        String str2 = "opqrstuvwxyzabcdefghijklmn";
 
         char arr1[] = new char[str1.length() + 1];
         char arr2[] = new char[str2.length() + 1];
@@ -92,6 +95,6 @@ public class LongestCommonSubsequence {
             arr2[i] = str2.charAt(i - 1);
         }
 
-        System.out.println("The Longest common sub sequence length is: " + findLCS(arr1, arr2));
+        System.out.println("\nThe Longest Common Subsequence Length is: " + findLCS(arr1, arr2));
     }
 }

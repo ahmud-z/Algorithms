@@ -30,7 +30,7 @@ public class CoinChangeCombinationProblem {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int coins[] = {1, 5, 10};
+        int coins[] = {1, 5, 10, 25, 50};
 
         System.out.print("Enter your amount: ");
         int moneyAmount = input.nextInt();

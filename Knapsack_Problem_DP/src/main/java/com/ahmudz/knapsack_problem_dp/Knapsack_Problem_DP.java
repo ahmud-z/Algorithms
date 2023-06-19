@@ -27,13 +27,14 @@ public class Knapsack_Problem_DP {
             }
         }
 
+        System.out.println("DP Table: ");
         for (int i = 0; i < numberOfItem + 1; i++) {
             for (int j = 0; j < knapsackCapacity + 1; j++) {
                 System.out.print(P[i][j] + " ");
             }
             System.out.println(" ");
         }
-
+        System.out.println("");
         return P[numberOfItem][knapsackCapacity];
     }
 

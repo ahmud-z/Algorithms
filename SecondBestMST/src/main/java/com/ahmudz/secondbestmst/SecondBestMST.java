@@ -119,7 +119,7 @@ public class SecondBestMST {
 
         Map<Integer, Object> graphData = new HashMap<>();
 
-        File filePath = new File("C:/Users/Mahmud/Desktop/graph_edges.txt");
+        File filePath = new File("C:/Users/Mahmud/Desktop/ByteLandData.txt");
         Scanner file = new Scanner(filePath);
 
         int nodeAmount = file.nextInt();

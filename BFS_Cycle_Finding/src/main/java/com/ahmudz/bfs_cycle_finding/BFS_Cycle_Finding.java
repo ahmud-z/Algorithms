@@ -18,7 +18,7 @@ class BFS {
         int visited[] = new int[node];
         int parent[] = new int[node];
         int level[] = new int[node];
-        boolean isCycle = false;
+        boolean hasCycle = false;
 
         for (int i = 0; i < node; i++) {
             visited[i] = 0;          // mark as white
@@ -48,7 +48,7 @@ class BFS {
                     q.add(i);       // added child into the queue
                 } else if (graph[u][i] == 1 && visited[i] == 1 && parent[u] != i) {
 
-                    isCycle = true;
+                    hasCycle = true;
                     break;
                 }
 
@@ -56,7 +56,7 @@ class BFS {
             visited[u] = 2; //mark as black
         }
 
-        if (isCycle) {
+        if (hasCycle) {
             System.out.println("\nCycle detected");
         } else {
             System.out.println("\nNo cycle found");
